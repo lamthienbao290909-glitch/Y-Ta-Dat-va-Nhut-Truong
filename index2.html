@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y Tá Đạt</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Khung chứa nội dung chính */
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            padding: 40px 60px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            animation: bounce 2s infinite alternate;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 15px;
+        }
+
+        .nickname {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #ffe600;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+            margin: 20px 0;
+            letter-spacing: 2px;
+            animation: pulse 1s infinite alternate;
+        }
+
+        p {
+            color: #f8f9fa;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        /* Hiệu ứng nhún nhảy cho khung */
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        /* Hiệu ứng đập thình thịch cho biệt danh */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
+
+        /* Trái tim bay lơ lửng */
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 24px;
+            animation: flyUp 4s linear infinite;
+            z-index: 1;
+            user-select: none;
+        }
+
+        @keyframes flyUp {
+            0% {
+                transform: translateY(0) scale(0.5) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-110vh) scale(1.5) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1></h1>
+        <!-- Thay chữ "CÁ TRÊ ĐẦU BÒ" bằng biệt danh đám bạn hay chọc nhé :))) -->
+        <div class="nickname">NHỰT TRƯỜNG ❤️ Y TÁ ĐẠT</div>
+        <p></p>
+    </div>
+
+    <script>
+        // Hàm tạo trái tim bay tự động bằng JavaScript
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            
+            // Random icon trái tim hoặc mấy icon bựa nếu thích
+            const icons = ['❤️', '💖', '💝', '✨'];
+            heart.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+            
+            // Random vị trí xuất hiện ngang màn hình
+            heart.style.left = Math.random() * 100 + 'vw';
+            
+            // Random kích thước và tốc độ bay cho sinh động
+            const size = Math.random() * 20 + 15; // từ 15px đến 35px
+            heart.style.fontSize = size + 'px';
+            
+            const duration = Math.random() * 3 + 2; // từ 2s đến 5s
+            heart.style.animationDuration = duration + 's';
+            
+            document.body.appendChild(heart);
+            
+            // Sau khi bay xong tự động xóa khỏi HTML để đỡ nặng máy
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        // Cứ mỗi 300 mili-giây tạo ra 1 trái tim/icon bay lên
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
