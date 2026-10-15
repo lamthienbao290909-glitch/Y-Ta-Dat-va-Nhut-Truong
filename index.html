@@ -91,6 +91,74 @@
                 opacity: 0;
             }
         }
+
+        .side-img {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 5;
+        }
+
+        .left-side {
+            left: 40px;
+        }
+
+        .right-side {
+            right: 40px;
+        }
+
+        /* Định dạng cho bức ảnh */
+        .side-img img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .side-img img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Khung chứa các nút bấm */
+        .btn-container {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        /* Thiết kế nút bấm */
+        .btn-container button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .btn-male {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-female {
+            background-color: #e83e8c;
+            color: white;
+        }
+
+        .btn-container button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
