@@ -90,124 +90,7 @@
                 transform: translateY(-110vh) scale(1.5) rotate(360deg);
                 opacity: 0;
             }
-        }
 
-        .side-img {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 5;
-        }
-
-        .left-side {
-            left: 40px;
-        }
-
-        .right-side {
-            right: 40px;
-        }
-
-        /* Định dạng cho bức ảnh */
-        .side-img img {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 15px;
-            border: 3px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
-
-        .side-img img:hover {
-            transform: scale(1.1);
-        }
-
-        /* Khung chứa các nút bấm */
-        .btn-container {
-            margin-top: 20px;
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-
-        /* Thiết kế nút bấm */
-        .btn-container button {
-            padding: 10px 20px;
-            font-size: 1rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: all 0.2s ease;
-        }
-
-        .btn-male {
-            background-color: #007bff;
-            color: white;
-        }
-
-        .btn-female {
-            background-color: #e83e8c;
-            color: white;
-        }
-
-        .btn-container button:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-
-            .image-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9); /* Nền đen mờ */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999; /* Đảm bảo nó nằm trên tất cả các thành phần khác */
-            opacity: 0; /* Mặc định ẩn bằng cách cho độ mờ bằng 0 */
-            visibility: hidden; /* Và cho trạng thái là ẩn */
-            transition: all 0.3s ease-in-out; /* Hiệu ứng mượt mà khi hiện/ẩn */
-            cursor: zoom-out; /* Khi di chuột vào nền đen sẽ hiện icon thu nhỏ */
-        }
-
-        /* Lớp CSS sẽ được thêm bằng JS để hiển thị overlay */
-        .image-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Hình ảnh bên trong lớp phủ */
-        .image-overlay img {
-            max-width: 90%; /* Không rộng quá 90% màn hình */
-            max-height: 90%; /* Không cao quá 90% màn hình */
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-            transform: scale(0.8); /* Mặc định hơi thu nhỏ để tạo hiệu ứng */
-            transition: transform 0.3s ease-in-out; /* Hiệu ứng mượt mà */
-        }
-
-        /* Hiệu ứng phóng to hình ảnh khi active */
-        .image-overlay.active img {
-            transform: scale(1); /* Phóng về kích thước tối đa (theo max-width/max-height) */
-        }
-
-        /* Hiệu ứng khi di chuột vào các ảnh nhỏ ở hai bên (để biết là có thể nhấn) */
-        .side-img img {
-            cursor: zoom-in; /* Hiện icon phóng to khi di chuột vào ảnh nhỏ */
-            transition: transform 0.2s ease-in-out; /* Giữ hiệu ứng transform cũ nếu có */
-        }
-
-        /* (Tùy chọn) Thêm hiệu ứng transform nhẹ khi di chuột vào ảnh nhỏ */
-        .side-img img:hover {
-            transform: scale(1.1); /* Phóng to nhẹ một chút khi hover */
-        }
     </style>
 </head>
 <body>
@@ -217,18 +100,6 @@
         <!-- Thay chữ "CÁ TRÊ ĐẦU BÒ" bằng biệt danh đám bạn hay chọc nhé :))) -->
         <div class="nickname">NHỰT TRƯỜNG ❤️ Y TÁ ĐẠT</div>
         <p></p>
-    </div>
-
-    <!-- ẢNH BÊN TRÁI (Cố định 1 tấm) -->
-    <div class="side-img left-side">
-        <img src="6e24fadb-4074-4e13-a05e-4e3f1f906d0b.jpg" alt="Ảnh trái" onclick="openImage('6e24fadb-4074-4e13-a05e-4e3f1f906d0b.jpg')">
-    </div>
-
-    <!-- ẢNH BÊN PHẢI (Có thể đổi qua lại) -->
-    <div class="side-img right-side">
-        <!-- Ảnh mặc định hiển thị ban đầu -->
-       <img id="rightImage" src="33b60f77-3b16-465b-b9a3-aa313e88dcc2.jpg" alt="Ảnh phải" onclick="openImage(this.src)">
-    </div>
 
     <script>
         // Hàm tạo trái tim bay tự động bằng JavaScript
@@ -264,20 +135,8 @@
         const overlay = document.getElementById('imageOverlay');
         const overlayImage = document.getElementById('overlayImage');
 
-        // Hàm để mở overlay và hiện ảnh
-        function openImage(imageSrc) {
-            overlayImage.src = imageSrc; // Thiết lập nguồn ảnh cho ảnh trong overlay
-            overlay.classList.add('active'); // Thêm lớp 'active' để hiển thị overlay
-        }
-
-        // Hàm để đóng overlay khi nhấn vào nền đen
-        function closeOverlay() {
-            overlay.classList.remove('active'); // Xóa lớp 'active' để ẩn overlay
         }
     </script>
 
-    <div id="imageOverlay" class="image-overlay" onclick="closeOverlay()">
-        <img id="overlayImage" src="" alt="Full Image">
-    </div>
 </body>
 </html>
